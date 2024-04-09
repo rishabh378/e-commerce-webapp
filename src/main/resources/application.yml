@@ -1,0 +1,33 @@
+spring:
+    application:
+        name: e-commerce-webapp
+
+    datasource:
+        driverClassName: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/e_commerce
+        username: root
+        password: root
+    jpa:
+        properties:
+            hibernate:
+                format_sql: false
+        show-sql: false
+        hibernate:
+            ddl-auto: none
+
+    flyway:
+        enabled: true
+        baselineOnMigrate: true
+        validate-on-migrate: true
+        validateMigrationNaming: true
+        table: db_migration_history
+security:
+    allowedPublicApis:
+        - /public/health
+        - /user/otp/login
+        - /user/otp/validate
+
+jwt:
+    secret: admin-service
+    accessTokenExpirationTime: 2592000000 #30 days
+    refreshTokenExpirationTime: 77760000000 #60 days
